@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>custom event</title>
+    <script src="https://cdn.polyfill.io/v1/polyfill.js?features=CustomEvent,Element.prototype.closest"></script>
+    <link rel="stylesheet" href="customselect.css" />
+    <script src="customselect.js"></script>
+</head>
+<body>
+    <div class="result">
+        You clicked: <span id="result"></span>
+    </div>
+
+    <div id="custom-select" class="customselect">
+        <button class="title">Select region</button>
+        <ul>
+            <!-- get value from data-value attr -->
+            <li data-value="Usa">Usa</li>
+            <li data-value="Asia">Asia</li>
+            <li data-value="Europe">Europe</li>
+            <li data-value="Africa">Africa</li>
+            <li data-value="New Zealand">New Zealand</li>
+        </ul>
+    </div>
+
+    <script>
+        // create new select
+        var newCustomSelect = new CustomSelect({
+            elem: document.getElementById('custom-select')
+        });
+
+        document.addEventListener('select', function(event) {
+            document.getElementById('result').innerHTML = event.detail.value;
+        });
+    </script>
+</body>
+</html>
